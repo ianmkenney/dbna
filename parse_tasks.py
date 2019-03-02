@@ -34,7 +34,7 @@ _getlocation = lambda : tuple([i.strip() for i in driver.find_element_by_xpath("
 _varname     = lambda : driver.find_element_by_xpath("/html/body/table/tbody/tr/td[2]/div[1]/div[1]/section/div[1]/div[1]/div/div[1]/div/div/div[1]/div[2]/p/span").text.split("-")[-1].strip()
 _comment     = lambda : driver.find_element_by_id("taskComments").text
 
-for i in ids[:10]:
+for i in ids:
     url = urlbyid(i)
     driver.get(url)
     time.sleep(3)
