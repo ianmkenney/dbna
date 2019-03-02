@@ -1,1 +1,22 @@
-source environment.sh
+load the virtual environment
+
+	workon dbna
+
+update path information for the geckodriver
+
+	source environment.sh
+
+extract ids
+
+	./extract_from_beginning.py ids/<NAMEOFTASKLIST>.txt 
+
+parse ids (this will output <NAMEOFTASKLIST>.csv)
+	
+	./parse_tasks.py ids/<NAMEOFTASKLIST>.txt
+
+update the master csv (or create it if it's not there)
+
+	./update_master.py ids/<NAMEOFTASKLIST>.csv
+
+	For this script just hit enter to skip. Any character will be entered as a value.
+	To quit, just type Ctrl-d
