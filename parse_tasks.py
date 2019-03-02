@@ -25,7 +25,7 @@ raw_input("press any key")
 
 taskurlbase = "https://clas.teamwork.com/#tasks/{0}"
 
-columns = ["category", "country", "state", "city", "varname", "comment"]
+columns = ["taskid", "category", "country", "state", "city", "varname", "comment"]
 df = pd.DataFrame(columns=columns)
 
 urlbyid      = lambda index : taskurlbase.format(index)
@@ -52,6 +52,6 @@ for i in ids[:10]:
     country, state, city = _getlocation()
     varname = _varname()
     comment = _comment()
-    df = df.append(pd.DataFrame([[category, country, state, city, varname, comment]], columns=columns))
+    df = df.append(pd.DataFrame([[i,category, country, state, city, varname, comment]], columns=columns))
 
 df.to_csv(filename.replace(".txt", ".csv"),sep="|", encoding='utf-8',index=False)
