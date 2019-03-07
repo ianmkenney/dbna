@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 import sys
 import time
 
-asuid = "pwberner"
-asupass = "IAN15C00L."
+asuid = raw_input("Enter your ASU ID: ")
+asupass = raw_input("Enter your ASU Password: ")
 
 filename = sys.argv[1]
 print("Writing Task IDs to: {0}".format(filename))

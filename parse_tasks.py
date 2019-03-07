@@ -6,8 +6,8 @@ import pandas as pd
 import sys
 import time
 
-asuid = "pwberner"
-asupass = "IAN15C00L."
+asuid = raw_input("Enter your ASU ID: ")
+asupass = raw_input("Enter your ASU Password: ")
 
 filename = sys.argv[1]
 
