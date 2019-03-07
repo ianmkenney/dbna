@@ -6,6 +6,9 @@ import pandas as pd
 import sys
 import time
 
+asuid = "pwberner"
+asupass = "IAN15C00L."
+
 filename = sys.argv[1]
 
 ids = []
@@ -21,7 +24,13 @@ driver.find_element(By.LINK_TEXT, "Single Sign On (SSO)").click()
 driver.find_element_by_id("loginemail").send_keys("pwberner@asu.edu")
 driver.find_element_by_xpath("/html/body/div/div[1]/section/div[2]/div/div/div/form/div[2]/button/span").click()
 
-raw_input("press any key")
+time.sleep(3)
+
+driver.find_element_by_id("username").send_keys(asuid)
+driver.find_element_by_id("password").send_keys(aspass)
+driver.find_element_by_class_name("submit").click()
+
+raw_input("Press Any Key to Continue")
 
 taskurlbase = "https://clas.teamwork.com/#tasks/{0}"
 
@@ -44,8 +53,7 @@ for i in ids:
             continue
     except:
         time.sleep(5)
-        driver.find_element_by_id("sidebarToggle").click()
-    
+        driver.find_element_by_id("sidebarToggle").click() 
     if not driver.find_element_by_xpath("/html/body/table/tbody/tr/td[1]/div/div[2]/div[2]/div/div/h3[2]").text == u'Parent Task':
         continue
     category = _category()

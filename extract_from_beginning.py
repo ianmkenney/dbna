@@ -3,9 +3,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import sys
+import time
+
+asuid = "pwberner"
+asupass = "IAN15C00L."
 
 filename = sys.argv[1]
-print("Will write ids to {0}".format(filename))
+print("Writing Task IDs to: {0}".format(filename))
 
 driver = webdriver.Firefox()
 
@@ -14,11 +18,17 @@ driver.find_element(By.LINK_TEXT, "Single Sign On (SSO)").click()
 driver.find_element_by_id("loginemail").send_keys("pwberner@asu.edu")
 driver.find_element_by_xpath("/html/body/div/div[1]/section/div[2]/div/div/div/form/div[2]/button/span").click()
 
-raw_input("Press any key to continue")
+time.sleep(3)
+
+driver.find_element_by_id("username").send_keys(asuid)
+driver.find_element_by_id("password").send_keys(asupass)
+driver.find_element_by_class_name("submit").click()
+
+raw_input("Press Any Key to Continue")
 
 driver.get("https://clas.teamwork.com/#projects/568138/tasks")
 
-raw_input("Select task list and press enter")
+raw_input("Select A Task List, then Press Enter")
 
 # load completed in general
 driver.find_element_by_xpath("/html/body/table/tbody/tr/td[2]/div[1]/div[1]/section/div[1]/div[1]/div/div[2]/a/span").click()
@@ -39,7 +49,9 @@ while True:
         completed_ids.append(get_id(driver.find_element_by_xpath(xpath)))
     except:
         try:
+            time.sleep(4)
             loadplease()
+            time.sleep(4)
             completed_ids.append(get_id(driver.find_element_by_xpath(xpath)))
         except:
             break
