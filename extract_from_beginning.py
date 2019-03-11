@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 import sys
 import time
 
-asuid = raw_input("Enter your ASU ID: ")
 asupass = raw_input("Enter your ASU Password: ")
 
 filename = sys.argv[1]
@@ -20,7 +19,7 @@ driver.find_element_by_xpath("/html/body/div/div[1]/section/div[2]/div/div/div/f
 
 time.sleep(3)
 
-driver.find_element_by_id("username").send_keys(asuid)
+driver.find_element_by_id("username").send_keys("pwberner")
 driver.find_element_by_id("password").send_keys(asupass)
 driver.find_element_by_class_name("submit").click()
 

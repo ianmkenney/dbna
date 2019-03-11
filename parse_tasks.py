@@ -6,7 +6,6 @@ import pandas as pd
 import sys
 import time
 
-asuid = raw_input("Enter your ASU ID: ")
 asupass = raw_input("Enter your ASU Password: ")
 
 filename = sys.argv[1]
@@ -24,10 +23,10 @@ driver.find_element(By.LINK_TEXT, "Single Sign On (SSO)").click()
 driver.find_element_by_id("loginemail").send_keys("pwberner@asu.edu")
 driver.find_element_by_xpath("/html/body/div/div[1]/section/div[2]/div/div/div/form/div[2]/button/span").click()
 
-time.sleep(3)
+time.sleep(5)
 
-driver.find_element_by_id("username").send_keys(asuid)
-driver.find_element_by_id("password").send_keys(aspass)
+driver.find_element_by_id("username").send_keys("pwberner")
+driver.find_element_by_id("password").send_keys(asupass)
 driver.find_element_by_class_name("submit").click()
 
 raw_input("Press Any Key to Continue")
